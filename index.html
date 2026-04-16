@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Secret Mode</title>
+
+<style>
+body {
+  margin: 0;
+  background: black;
+  color: white;
+  font-family: monospace;
+  text-align: center;
+  transition: 0.3s;
+}
+
+button {
+  margin-top: 200px;
+  padding: 20px 40px;
+  font-size: 20px;
+  background: lime;
+  border: none;
+  cursor: pointer;
+}
+
+.glitch {
+  animation: flash 0.1s infinite;
+}
+
+@keyframes flash {
+  0% { background: black; }
+  50% { background: red; }
+  100% { background: blue; }
+}
+</style>
+</head>
+
+<body>
+
+<h1>Nothing to see here...</h1>
+<button onclick="activate()">Do NOT click</button>
+
+<script>
+function activate() {
+  document.body.classList.add("glitch");
+
+  document.body.innerHTML = `
+    <h1>⚠ SYSTEM BREACH ⚠</h1>
+    <p>Access Granted...</p>
+    <p>Downloading secrets...</p>
+  `;
+}
+</script>
+
+</body>
+</html>
