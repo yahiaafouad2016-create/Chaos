@@ -58,6 +58,7 @@ button {
 <h1>⚠ Chaos Control Panel ⚠</h1>
 
 <div class="container">
+  <button onclick="jumpscare()">⚠ DO NOT PRESS ⚠</button>
    <button onclick="rainbow()">Rainbow Mode</button>
 <button onclick="dark()">Dark Void</button>
 <button onclick="spam()">Spam Text</button>
@@ -261,6 +262,56 @@ function rotate() {
 
 function disappear() {
   document.body.style.opacity = "0";
+}
+function jumpscare() {
+
+  // Dark screen instantly
+  document.body.innerHTML = "";
+  document.body.style.background = "black";
+
+  // Creepy build-up text
+  let text = document.createElement("div");
+  text.innerHTML = "…accessing…";
+  text.style.color = "red";
+  text.style.fontSize = "30px";
+  text.style.textAlign = "center";
+  text.style.marginTop = "200px";
+  document.body.appendChild(text);
+
+  // After delay → main scare
+  setTimeout(() => {
+
+    document.body.innerHTML = "";
+
+    let scare = document.createElement("div");
+    scare.innerHTML = "👁️";
+    scare.style.position = "fixed";
+    scare.style.top = "50%";
+    scare.style.left = "50%";
+    scare.style.transform = "translate(-50%, -50%)";
+    scare.style.fontSize = "150px";
+    scare.style.zIndex = "9999";
+
+    document.body.appendChild(scare);
+
+    // Flicker effect
+    let flicker = setInterval(() => {
+      scare.style.opacity = Math.random();
+    }, 100);
+
+    // Shake effect
+    let shake = setInterval(() => {
+      document.body.style.marginLeft = (Math.random()*30 - 15) + "px";
+    }, 50);
+
+    // End after 2 seconds
+    setTimeout(() => {
+      clearInterval(flicker);
+      clearInterval(shake);
+      location.reload();
+    }, 2000);
+
+  }, 1500);
 }
 </script>
 
