@@ -58,6 +58,12 @@ button {
 <h1>⚠ Chaos Control Panel ⚠</h1>
 
 <div class="container">
+  <button onclick="trail()">Mouse Trail</button>
+<button onclick="freeze()">Freeze Screen</button>
+<button onclick="clock()">Time Warp</button>
+<button onclick="noise()">Static Noise</button>
+<button onclick="shrink()">Shrink Page</button>
+<button onclick="laser()">Laser Mode</button>
   <button onclick="jumpscare()">⚠ DO NOT PRESS ⚠</button>
    <button onclick="rainbow()">Rainbow Mode</button>
 <button onclick="dark()">Dark Void</button>
@@ -312,6 +318,62 @@ function jumpscare() {
     }, 2000);
 
   }, 1500);
+}
+function trail() {
+  document.addEventListener("mousemove", e => {
+    let dot = document.createElement("div");
+    dot.style.position = "absolute";
+    dot.style.width = "5px";
+    dot.style.height = "5px";
+    dot.style.background = "lime";
+    dot.style.left = e.pageX + "px";
+    dot.style.top = e.pageY + "px";
+    document.body.appendChild(dot);
+
+    setTimeout(() => dot.remove(), 500);
+  });
+}
+
+function freeze() {
+  document.body.style.pointerEvents = "none";
+}
+
+function clock() {
+  setInterval(() => {
+    document.body.innerHTML = "<h1>" + new Date().toLocaleTimeString() + "</h1>";
+  }, 1000);
+}
+
+function noise() {
+  setInterval(() => {
+    let n = document.createElement("div");
+    n.style.position = "absolute";
+    n.style.width = "2px";
+    n.style.height = "2px";
+    n.style.background = "white";
+    n.style.left = Math.random()*window.innerWidth + "px";
+    n.style.top = Math.random()*window.innerHeight + "px";
+    document.body.appendChild(n);
+  }, 5);
+}
+
+function shrink() {
+  document.body.style.transform = "scale(0.5)";
+}
+
+function laser() {
+  document.addEventListener("click", e => {
+    let beam = document.createElement("div");
+    beam.style.position = "absolute";
+    beam.style.width = "2px";
+    beam.style.height = "100vh";
+    beam.style.background = "red";
+    beam.style.left = e.pageX + "px";
+    beam.style.top = "0";
+    document.body.appendChild(beam);
+
+    setTimeout(() => beam.remove(), 300);
+  });
 }
 </script>
 
