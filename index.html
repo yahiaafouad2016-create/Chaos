@@ -58,6 +58,26 @@ button {
 <h1>⚠ Chaos Control Panel ⚠</h1>
 
 <div class="container">
+   <button onclick="rainbow()">Rainbow Mode</button>
+<button onclick="dark()">Dark Void</button>
+<button onclick="spam()">Spam Text</button>
+<button onclick="bounce()">Bounce Screen</button>
+<button onclick="tiny()">Tiny Mode</button>
+<button onclick="giant()">Giant Mode</button>
+<button onclick="cursor()">Crazy Cursor</button>
+<button onclick="blur()">Blur Vision</button>
+<button onclick="rotate()">Rotate Screen</button>
+<button onclick="disappear()">Disappear</button>
+  <button onclick="colorParty()">Color Party</button>
+<button onclick="typeText()">Typing Effect</button>
+<button onclick="darkMode()">Dark Mode</button>
+<button onclick="lightMode()">Light Mode</button>
+<button onclick="growText()">BIG TEXT</button>
+<button onclick="tinyText()">tiny text</button>
+<button onclick="randomMove()">Move Button</button>
+<button onclick="borderMadness()">Border Madness</button>
+<button onclick="emojiSpam()">Emoji Spam</button>
+<button onclick="rainbowText()">Rainbow Text</button>
   <button onclick="glitch()">Glitch</button>
   <button onclick="spin()">Spin</button>
   <button onclick="rain()">Matrix Rain</button>
@@ -117,6 +137,130 @@ function duplicate() {
 
 function reset() {
   location.reload();
+}
+  function colorParty() {
+  setInterval(() => {
+    document.body.style.background =
+      "rgb(" + Math.random()*255 + "," + Math.random()*255 + "," + Math.random()*255 + ")";
+  }, 200);
+}
+
+function typeText() {
+  let text = "ACCESSING SECRET FILES...";
+  let i = 0;
+  document.body.innerHTML = "<h1 id='typing'></h1>";
+  
+  let interval = setInterval(() => {
+    document.getElementById("typing").innerHTML += text[i];
+    i++;
+    if (i >= text.length) clearInterval(interval);
+  }, 100);
+}
+
+function darkMode() {
+  document.body.style.background = "black";
+  document.body.style.color = "white";
+}
+
+function lightMode() {
+  document.body.style.background = "white";
+  document.body.style.color = "black";
+}
+
+function growText() {
+  document.body.style.fontSize = "50px";
+}
+
+function tinyText() {
+  document.body.style.fontSize = "10px";
+}
+
+function randomMove() {
+  let btns = document.querySelectorAll("button");
+  btns.forEach(btn => {
+    btn.style.position = "absolute";
+    btn.style.left = Math.random() * window.innerWidth + "px";
+    btn.style.top = Math.random() * window.innerHeight + "px";
+  });
+}
+
+function borderMadness() {
+  document.body.style.border = "20px dashed red";
+}
+
+function emojiSpam() {
+  for (let i = 0; i < 100; i++) {
+    let e = document.createElement("div");
+    e.innerHTML = "😈";
+    e.style.position = "absolute";
+    e.style.left = Math.random() * window.innerWidth + "px";
+    e.style.top = Math.random() * window.innerHeight + "px";
+    document.body.appendChild(e);
+  }
+}
+
+function rainbowText() {
+  let colors = ["red","orange","yellow","green","blue","indigo","violet"];
+  let i = 0;
+  setInterval(() => {
+    document.body.style.color = colors[i % colors.length];
+    i++;
+  }, 200);
+}
+function rainbow() {
+  let colors = ["red","orange","yellow","green","blue","purple"];
+  let i = 0;
+  setInterval(() => {
+    document.body.style.background = colors[i % colors.length];
+    i++;
+  }, 200);
+}
+
+function dark() {
+  document.body.style.background = "black";
+  document.body.innerHTML = "<h1>🌑 You are lost in the void...</h1>";
+}
+
+function spam() {
+  setInterval(() => {
+    let p = document.createElement("p");
+    p.innerText = "HAHA";
+    document.body.appendChild(p);
+  }, 100);
+}
+
+function bounce() {
+  let pos = 0;
+  let dir = 1;
+  setInterval(() => {
+    pos += dir * 10;
+    if (pos > 200 || pos < 0) dir *= -1;
+    document.body.style.marginTop = pos + "px";
+  }, 50);
+}
+
+function tiny() {
+  document.body.style.transform = "scale(0.3)";
+}
+
+function giant() {
+  document.body.style.transform = "scale(2)";
+}
+
+function cursor() {
+  document.body.style.cursor = "crosshair";
+}
+
+function blur() {
+  document.body.style.filter = "blur(5px)";
+}
+
+function rotate() {
+  document.body.style.transform = "rotate(180deg)";
+}
+
+function disappear() {
+  document.body.style.opacity = "0";
 }
 </script>
 
