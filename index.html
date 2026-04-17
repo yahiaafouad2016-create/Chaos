@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Secret Mode</title>
+<title>Chaos Panel</title>
 
 <style>
 body {
@@ -10,19 +10,38 @@ body {
   color: white;
   font-family: monospace;
   text-align: center;
-  transition: 0.3s;
+  overflow: hidden;
+}
+
+h1 {
+  margin-top: 40px;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 40px;
 }
 
 button {
-  margin-top: 200px;
-  padding: 20px 40px;
-  font-size: 20px;
+  margin: 10px;
+  padding: 15px 25px;
+  font-size: 16px;
   background: lime;
   border: none;
   cursor: pointer;
 }
 
-.glitch {
+.spin {
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  100% { transform: rotate(360deg); }
+}
+
+.flash {
   animation: flash 0.1s infinite;
 }
 
@@ -36,18 +55,68 @@ button {
 
 <body>
 
-<h1>Nothing to see here...</h1>
-<button onclick="activate()">Do NOT click</button>
+<h1>⚠ Chaos Control Panel ⚠</h1>
+
+<div class="container">
+  <button onclick="glitch()">Glitch</button>
+  <button onclick="spin()">Spin</button>
+  <button onclick="rain()">Matrix Rain</button>
+  <button onclick="explode()">Explode Text</button>
+  <button onclick="invert()">Invert Colors</button>
+  <button onclick="shake()">Shake Screen</button>
+  <button onclick="zoom()">Zoom Mode</button>
+  <button onclick="ghost()">Ghost Mode</button>
+  <button onclick="duplicate()">Duplicate Chaos</button>
+  <button onclick="reset()">RESET</button>
+</div>
 
 <script>
-function activate() {
-  document.body.classList.add("glitch");
+function glitch() {
+  document.body.classList.toggle("flash");
+}
 
-  document.body.innerHTML = `
-    <h1>⚠ SYSTEM BREACH ⚠</h1>
-    <p>Access Granted...</p>
-    <p>Downloading secrets...</p>
-  `;
+function spin() {
+  document.body.classList.toggle("spin");
+}
+
+function rain() {
+  let rainText = "";
+  for (let i = 0; i < 200; i++) {
+    rainText += Math.random() > 0.5 ? "0" : "1";
+  }
+  document.body.innerHTML += "<p>" + rainText + "</p>";
+}
+
+function explode() {
+  document.body.innerHTML = "<h1>💥 BOOM 💥</h1>";
+}
+
+function invert() {
+  document.body.style.filter = "invert(1)";
+}
+
+function shake() {
+  let x = 0;
+  setInterval(() => {
+    x = x === 0 ? 10 : 0;
+    document.body.style.marginLeft = x + "px";
+  }, 50);
+}
+
+function zoom() {
+  document.body.style.transform = "scale(1.5)";
+}
+
+function ghost() {
+  document.body.style.opacity = "0.3";
+}
+
+function duplicate() {
+  document.body.innerHTML += document.body.innerHTML;
+}
+
+function reset() {
+  location.reload();
 }
 </script>
 
