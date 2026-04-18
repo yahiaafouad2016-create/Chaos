@@ -94,6 +94,9 @@ button {
   <button onclick="zoom()">Zoom Mode</button>
   <button onclick="ghost()">Ghost Mode</button>
   <button onclick="duplicate()">Duplicate Chaos</button>
+  <button onclick="godMode()" style="position:fixed; bottom:10px; right:10px; background:red;">
+☠
+</button>
   <button onclick="reset()">RESET</button>
 </div>
 
@@ -375,6 +378,47 @@ function laser() {
     setTimeout(() => beam.remove(), 300);
   });
 }
+function godMode() {
+
+  alert("⚠ GOD MODE ACTIVATED ⚠");
+
+  // Activate multiple chaos effects at once
+  document.body.classList.add("flash");
+  document.body.style.transform = "rotate(180deg) scale(1.2)";
+  document.body.style.filter = "invert(1) blur(2px)";
+
+  // Color madness
+  setInterval(() => {
+    document.body.style.background =
+      "rgb(" + Math.random()*255 + "," + Math.random()*255 + "," + Math.random()*255 + ")";
+  }, 100);
+
+  // Shake chaos
+  setInterval(() => {
+    document.body.style.marginLeft = (Math.random()*40 - 20) + "px";
+  }, 50);
+
+  // Emoji flood
+  setInterval(() => {
+    let e = document.createElement("div");
+    e.innerHTML = "😈";
+    e.style.position = "absolute";
+    e.style.left = Math.random()*window.innerWidth + "px";
+    e.style.top = Math.random()*window.innerHeight + "px";
+    document.body.appendChild(e);
+  }, 100);
+
+}
+let code = "";
+
+document.addEventListener("keydown", (e) => {
+  code += e.key.toLowerCase();
+
+  if (code.includes("god")) {
+    godMode();
+    code = "";
+  }
+});
 </script>
 
 </body>
