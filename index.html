@@ -550,9 +550,9 @@ function terminal() {
 function runCommand(cmd) {
   let out = document.getElementById("output");
 
-  if (cmd === "help") {
-    out.innerHTML += "<p>Commands: level1, level2, boss</p>";
-  }
+if (cmd === "help") {
+  out.innerHTML += "<p>Commands: level1, level2, level3, level4, level5, boss</p>";
+}
 
   else if (cmd === "level1") {
     out.innerHTML += "<p>Loading Level 1...</p>";
@@ -628,6 +628,43 @@ function boss() {
     document.body.style.transform =
       "rotate(" + Math.random()*360 + "deg) scale(" + (Math.random()+0.5) + ")";
   }, 200);
+}
+// 🎮 Level 3 (glitch chaos)
+function level3() {
+  setInterval(() => {
+    document.body.style.filter =
+      "invert(" + Math.random() + ") blur(" + Math.random()*5 + "px)";
+  }, 200);
+
+  setInterval(() => {
+    document.body.style.marginTop = (Math.random()*40 - 20) + "px";
+  }, 100);
+}
+
+// 🎮 Level 4 (text invasion)
+function level4() {
+  setInterval(() => {
+    let t = document.createElement("div");
+    t.innerHTML = "ACCESS...";
+    t.style.position = "absolute";
+    t.style.left = Math.random()*window.innerWidth + "px";
+    t.style.top = Math.random()*window.innerHeight + "px";
+    t.style.color = "red";
+    document.body.appendChild(t);
+  }, 50);
+}
+
+// 🎮 Level 5 (screen break illusion)
+function level5() {
+  setInterval(() => {
+    document.body.style.transform =
+      "skew(" + (Math.random()*40-20) + "deg)";
+  }, 200);
+
+  setInterval(() => {
+    document.body.style.border =
+      Math.random()*30 + "px solid red";
+  }, 300);
 }
 </script>
 
