@@ -102,6 +102,14 @@ button {
 <button onclick="pixel()">Pixel Mode</button>
 <button onclick="wave()">Wave Distortion</button>
 <button onclick="spamText()">Text Storm</button>
+<button onclick="spiral()">Spiral</button>
+<button onclick="glitchText()">Glitch Text</button>
+<button onclick="gravityFlip()">Flip Gravity</button>
+<button onclick="spotlight()">Spotlight</button>
+<button onclick="echo()">Echo Screen</button>
+<button onclick="scan()">Scanner</button>
+<button onclick="vortex()">Vortex</button>
+<button onclick="panic()">PANIC</button>
 <button onclick="startSystem()">ENTER SYSTEM</button>
   <button onclick="BossMode()" style="position:fixed; bottom:10px; right:10px; background:red;">
 ☠
@@ -387,7 +395,7 @@ function laser() {
     setTimeout(() => beam.remove(), 300);
   });
 }
-function godMode() {
+function BossMode() {
 
   alert("⚠ Boss MODE ACTIVATED ⚠");
 
@@ -423,8 +431,8 @@ let code = "";
 document.addEventListener("keydown", (e) => {
   code += e.key.toLowerCase();
 
-  if (code.includes("god")) {
-    godMode();
+  if (code.includes("Boss")) {
+    BossMode();
     code = "";
   }
 });
@@ -514,7 +522,7 @@ document.body.appendChild(invisible);
 function startSystem() {
   let pass = prompt("ENTER PASSWORD:");
 
-  if (pass === "1234") {
+  if (pass === "2016") {
     terminal();
   } else {
     alert("ACCESS DENIED");
@@ -672,6 +680,103 @@ function level5() {
       Math.random()*30 + "px solid red";
   }, 300);
 }
+function spiral() {
+  let deg = 0;
+  setInterval(() => {
+    deg += 10;
+    document.body.style.transform = "rotate(" + deg + "deg) scale(1.1)";
+  }, 100);
+}
+
+function glitchText() {
+  setInterval(() => {
+    document.body.innerHTML += "<h2>ERROR_" + Math.floor(Math.random()*999) + "</h2>";
+  }, 200);
+}
+
+function gravityFlip() {
+  document.body.style.transform = "rotate(180deg)";
+}
+
+function spotlight() {
+  document.body.style.background = "black";
+  document.addEventListener("mousemove", e => {
+    document.body.style.background =
+      `radial-gradient(circle at ${e.clientX}px ${e.clientY}px, white 0%, black 150px)`;
+  });
+}
+
+function echo() {
+  setInterval(() => {
+    document.body.innerHTML += document.body.innerHTML;
+  }, 2000);
+}
+
+function scan() {
+  let line = document.createElement("div");
+  line.style.position = "fixed";
+  line.style.width = "100%";
+  line.style.height = "2px";
+  line.style.background = "lime";
+  document.body.appendChild(line);
+
+  let y = 0;
+  setInterval(() => {
+    y += 5;
+    line.style.top = y + "px";
+    if (y > window.innerHeight) y = 0;
+  }, 20);
+}
+
+function vortex() {
+  setInterval(() => {
+    document.body.style.transform =
+      "rotate(" + Math.random()*360 + "deg) scale(" + (Math.random()+0.5) + ")";
+  }, 200);
+}
+
+function panic() {
+  document.body.innerHTML = "<h1>⚠ SYSTEM FAILURE ⚠</h1>";
+  setInterval(() => {
+    document.body.style.background =
+      "rgb(" + Math.random()*255 + "," + Math.random()*255 + "," + Math.random()*255 + ")";
+  }, 50);
+}
+document.addEventListener("dblclick", () => {
+  alert("😈 DOUBLE CLICK SECRET");
+  vortex();
+});
+let secret2 = "";
+
+document.addEventListener("keydown", e => {
+  secret2 += e.key.toLowerCase();
+
+  if (secret2.includes("matrix")) {
+    rain();
+    alert("MATRIX MODE");
+    secret2 = "";
+  }
+});
+let hoverTimer;
+
+document.addEventListener("mousemove", () => {
+  clearTimeout(hoverTimer);
+  hoverTimer = setTimeout(() => {
+    alert("Watching...");
+    glitch();
+  }, 3000);
+});
+let clicks = 0;
+
+document.addEventListener("click", () => {
+  clicks++;
+  setTimeout(() => clicks = 0, 1000);
+
+  if (clicks >= 5) {
+    alert("⚠ COMBO UNLOCKED");
+    godMode();
+  }
+});
 </script>
 
 </body>
