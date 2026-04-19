@@ -784,6 +784,69 @@ document.addEventListener("click", (e) => {
     explode();
   }
 });
+let holdTimer;
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "a") {
+    holdTimer = setTimeout(() => {
+      alert("🔒 HOLD SECRET");
+      vortex();
+    }, 2000);
+  }
+});
+
+document.addEventListener("keyup", (e) => {
+  if (e.key === "a") {
+    clearTimeout(holdTimer);
+  }
+});
+let dragging = false;
+
+document.addEventListener("mousedown", () => dragging = true);
+document.addEventListener("mouseup", () => dragging = false);
+
+document.addEventListener("mousemove", () => {
+  if (dragging) {
+    alert("🌀 DRAG SECRET");
+    spin();
+    dragging = false;
+  }
+});
+let lastKeyTime = Date.now();
+
+document.addEventListener("keydown", () => {
+  let now = Date.now();
+
+  if (now - lastKeyTime < 100) {
+    alert("⚡ SPEED SECRET");
+    glitch();
+  }
+
+  lastKeyTime = now;
+});
+document.addEventListener("click", (e) => {
+  if (e.clientX > window.innerWidth - 20) {
+    alert("➡ EDGE SECRET");
+    teleport();
+  }
+});
+document.addEventListener("visibilitychange", () => {
+  if (document.hidden) {
+    alert("👀 Don't leave...");
+    ghost();
+  }
+});
+let reverse = "";
+
+document.addEventListener("keydown", (e) => {
+  reverse = e.key.toLowerCase() + reverse;
+
+  if (reverse.includes("boss")) {
+    alert("👑 REVERSE SECRET");
+    BossMode();
+    reverse = "";
+  }
+});
 </script>
 
 </body>
