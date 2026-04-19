@@ -758,12 +758,7 @@ document.addEventListener("keydown", e => {
   }
 });
 
-let clicks = 0;
-
-document.addEventListener("click", () => {
-  clicks++;
-  setTimeout(() => clicks = 0, 1000);
-
+// 🔐 NUMBER SECRET
 let numCode = "";
 
 document.addEventListener("keydown", (e) => {
@@ -771,7 +766,14 @@ document.addEventListener("keydown", (e) => {
     numCode += e.key;
   }
 
-  
+  if (numCode.includes("404")) {
+    alert("🚫 ERROR SECRET");
+    glitch();
+    numCode = "";
+  }
+});
+
+// 🎯 CENTER CLICK SECRET
 document.addEventListener("click", (e) => {
   let centerX = window.innerWidth / 2;
   let centerY = window.innerHeight / 2;
