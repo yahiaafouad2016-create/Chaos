@@ -757,15 +757,7 @@ document.addEventListener("keydown", e => {
     secret2 = "";
   }
 });
-let hoverTimer;
 
-document.addEventListener("mousemove", () => {
-  clearTimeout(hoverTimer);
-  hoverTimer = setTimeout(() => {
-    alert("Watching...");
-    glitch();
-  }, 3000);
-});
 let clicks = 0;
 
 document.addEventListener("click", () => {
