@@ -772,9 +772,27 @@ document.addEventListener("click", () => {
   clicks++;
   setTimeout(() => clicks = 0, 1000);
 
-  if (clicks >= 5) {
-    alert("⚠ COMBO UNLOCKED");
-    godMode();
+let numCode = "";
+
+document.addEventListener("keydown", (e) => {
+  if (!isNaN(e.key)) {
+    numCode += e.key;
+  }
+
+  if (numCode.includes("404")) {
+    alert("ERROR SECRET");
+    glitch();
+    numCode = "";
+  }
+});
+document.addEventListener("click", (e) => {
+  let centerX = window.innerWidth / 2;
+  let centerY = window.innerHeight / 2;
+
+  if (Math.abs(e.clientX - centerX) < 50 &&
+      Math.abs(e.clientY - centerY) < 50) {
+    alert("🎯 CENTER HIT");
+    explode();
   }
 });
 </script>
